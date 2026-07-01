@@ -13,7 +13,8 @@ app.add_middleware(
         "http://localhost:80",     # Docker frontend explicit port
         "http://localhost:5173",   # Vite dev server (local dev)
         "http://localhost:3000",   # alternate dev port
-        "https://financial-multi-agent-analyst.vercel.app/",  
+        "https://financial-multi-agent-analyst.vercel.app/"
+        "*",  
     ],
     allow_credentials=True,
     allow_methods=["*"],           # allows OPTIONS, GET, POST, etc.
