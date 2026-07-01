@@ -5,16 +5,20 @@ from backend.api.routes import router
 
 app = FastAPI()
 
+# ADD THIS BLOCK right after app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173",  # React Vite frontend
+        "http://localhost",        # Docker frontend
+        "http://localhost:80",     # Docker frontend explicit port
+        "http://localhost:5173",   # Vite dev server (local dev)
+        "http://localhost:3000",   # alternate dev port
+        "https://your-app.vercel.app",  # replace with your Vercel URL later
     ],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["*"],           # allows OPTIONS, GET, POST, etc.
     allow_headers=["*"],
 )
-
 
 # Docker and Render use this to know if your app is alive
 
