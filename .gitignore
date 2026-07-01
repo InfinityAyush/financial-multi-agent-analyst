@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+
+# Python cache
+.pytest_cache/
+.mypy_cache/
+
+# Chroma DB
+data/chroma/
+chroma/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Docker
+*.log
+
+# Build artifacts
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# HuggingFace cache
+.cache/

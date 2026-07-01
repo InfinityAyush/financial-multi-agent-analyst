@@ -1,0 +1,26 @@
+fastapi
+uvicorn
+python-dotenv
+
+langchain
+langgraph
+langchain-community
+langchain-google-genai
+langchain-groq
+langchain-chroma
+langchain-huggingface
+
+chromadb
+
+sentence-transformers
+
+beautifulsoup4
+feedparser
+httpx
+pandas
+pydantic
+pypdf
+yfinance
+
+# CPU-only torch
+torch --index-url https://download.pytorch.org/whl/cpu
