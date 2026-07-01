@@ -26,8 +26,7 @@ RUN uv sync --no-dev
 COPY backend/ ./backend/
 COPY data/ ./data/
 
-# Create directory for ChromaDB (will be overridden by volume mount)
-RUN mkdir -p /app/chroma_db
+
 
 EXPOSE 8000
 
