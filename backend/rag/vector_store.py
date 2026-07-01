@@ -1,8 +1,12 @@
-from langchain_huggingface import HuggingFaceEmbeddings
+
 from langchain_chroma import Chroma
 
-embeddings = HuggingFaceEmbeddings(
-    model_name="BAAI/bge-small-en-v1.5"
+from langchain_voyageai import VoyageAIEmbeddings
+import os
+
+embeddings = VoyageAIEmbeddings(
+    voyage_api_key=os.getenv("VOYAGE_API_KEY"),
+    model="voyage-3-lite"   # best free tier model
 )
 
 vector_store = Chroma(

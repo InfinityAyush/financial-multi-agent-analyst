@@ -4,33 +4,37 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.backend
-
     container_name: financial-backend
-
     ports:
       - "8000:8000"
-
     env_file:
       - .env
-
     volumes:
-      - ./data:/app/data
-
+      # Persist ChromaDB and SEC filings across container restarts
+      - chroma_data:/app/chroma_db
+      - sec_filings:/app/data/sec_filings
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     restart: unless-stopped
 
   frontend:
     build:
       context: ./frontend
-
+      dockerfile: Dockerfile.frontend   # <-- was missing before
     container_name: financial-frontend
-
     ports:
-      - "5173:5173"
-
+      - "80:80"
     depends_on:
-      - backend
-
-    environment:
-      - VITE_API_URL=http://localhost:8000
-
+      backend:
+        condition: service_healthy     # wait for backend to be ready
+    # No VITE_API_URL needed — nginx proxies /api/ to backend container
     restart: unless-stopped
+
+# Named volumes survive docker-compose down (your data is safe)
+volumes:
+  chroma_data:
+  sec_filings:

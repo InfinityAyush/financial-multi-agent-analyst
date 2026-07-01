@@ -1,46 +1,23 @@
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-*.so
 
-# Virtual environments
-.venv/
-venv/
 
-# Environment variables
-.env
-
-# IDE
-.vscode/
-.idea/
-
-# OS files
-.DS_Store
-
-# Python cache
-.pytest_cache/
-.mypy_cache/
-
-# Chroma DB
-data/chroma/
-chroma/
+# ChromaDB — never commit the vector database, use Docker volumes
 chroma_db/
 
-# Node
-frontend/node_modules/
-frontend/dist/
+# Large PDF filings — too big for git, mount as volumes
+data/sec_filings/*.pdf
 
-# Docker
-*.log
+# Environment files — never commit API keys
+.env
+.env.local
+.env.production
 
-# Build artifacts
+# Python
+__pycache__/
+*.pyc
+.venv/
 dist/
-build/
 
-# Jupyter
-.ipynb_checkpoints/
-
-# HuggingFace cache
-.cache/
+# Node / frontend
+node_modules/
+frontend/dist/
+frontend/.env.local

@@ -1,0 +1,30 @@
+# render.yaml — put this in the ROOT of your repo
+# Connects to Render.com for free backend hosting
+# Go to https://dashboard.render.com → New → Blueprint → connect your GitHub repo
+
+services:
+  - type: web
+    name: financial-analyst-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile.backend
+
+    # Free tier — note: spins down after 15 min of inactivity
+    # First request after sleep takes ~30s to wake up (acceptable for portfolio project)
+    plan: free
+
+    envVars:
+      # Add these in Render dashboard under Environment:
+      # GOOGLE_API_KEY → your Gemini key
+      # GROQ_API_KEY   → your Groq key
+      - key: GOOGLE_API_KEY
+        sync: false        # means: enter manually in Render dashboard
+      - key: GROQ_API_KEY
+        sync: false
+
+    # Persistent disk for ChromaDB (1GB free on Render)
+    disk:
+      name: chroma-data
+      mountPath: /app/chroma_db
+      sizeGB: 1
+
+    healthCheckPath: /health
