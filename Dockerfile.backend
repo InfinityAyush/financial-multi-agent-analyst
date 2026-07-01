@@ -19,9 +19,6 @@ RUN pip install uv
 # This way Docker reuses the installed packages layer on code-only changes
 COPY pyproject.toml uv.lock ./
 
-# Install CPU-only PyTorch first (avoids pulling 2GB GPU version)
-RUN pip install torch --index-url https://download.pytorch.org/whl/cpu
-
 # Install all project dependencies
 RUN uv sync --no-dev
 
