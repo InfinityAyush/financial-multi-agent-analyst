@@ -26,6 +26,7 @@ venv/
 # Chroma DB
 data/chroma/
 chroma/
+chroma_db/
 
 # Node
 frontend/node_modules/
