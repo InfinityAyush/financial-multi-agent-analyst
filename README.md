@@ -1,5 +1,5 @@
 # Financial Multi-Agent Analyst
-
+Live working demo - https://financial-multi-agent-analyst.vercel.app/
 An end-to-end **Agentic AI application** that performs comprehensive investment analysis using multiple specialized AI agents, Retrieval-Augmented Generation (RAG), real-time financial data, and SEC filing analysis.
 
 The system analyzes a company from multiple perspectives and generates a final investment recommendation by simulating a debate between bullish and bearish analysts.
